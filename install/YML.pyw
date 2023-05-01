@@ -25,7 +25,8 @@ for russian_name, only_name in zip(russian_names, only_names):
             {
                 'command': {
                     'action': 'ahk',
-                    'exe_path': f"ahk/{only_name}.ahk"
+                    'exe_path': f"ahk/{only_name}.exe"
+                    'exe_args:'
                 },
                 'voice': {
                     'sounds': ['ok1', 'ok2', 'ok3']
