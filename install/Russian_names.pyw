@@ -9,7 +9,7 @@ with open('only_names.txt', 'r') as input_file, open('russian_names.txt', 'w') a
 
         # Создаем словарь с символами и их переводами
         translation_dict = str.maketrans('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',
-                                         'абцдефгхижклмнопкрстуввхизАБЦДЕФГХИЙКЛМНОПКРСТУВВХИЗ')
+                                         'абкдефгхижклмнопкрстуввхизАБЦДЕФГХИЙКЛМНОПКРСТУВВХИЗ')
 
         # Применяем перевод к строке
         russian_name = name.translate(translation_dict)
