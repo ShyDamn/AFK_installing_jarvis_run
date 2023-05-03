@@ -1,8 +1,24 @@
 import os
 import yaml
 
-# Указываем путь для создания директории
-directory_path = r'C:\jarvis-app\commands\run'
+folder_to_find = 'jarvis-app'  # Искомая папка
+subfolder_to_find = 'commands'  # Искомая подпапка
+new_folder = 'run'  # Новая папка для создания
+
+directory_path = None
+
+for drive in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ':
+    disk_to_search = f"{drive}:\\"
+    if os.path.exists(disk_to_search):
+        for roots, dirs, files in os.walk(os.path.join(disk_to_search, "\\")):
+            # Если папка найдена, ищем в ней подпапку
+            if folder_to_find in dirs:
+                folder_path = os.path.join(roots, folder_to_find)
+                for subroots, subdirs, subfiles in os.walk(os.path.join(folder_path)):
+                    if subfolder_to_find in subdirs:
+                        subfolder_path = os.path.join(subroots, subfolder_to_find)
+                        directory_path = os.path.join(subfolder_path, new_folder)
+                        os.makedirs(directory_path, exist_ok=True)
 
 # Читаем данные из файлов
 with open('russian_names.txt', 'r', encoding='windows-1251') as russian:
