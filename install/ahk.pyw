@@ -1,6 +1,7 @@
 import os
+import subprocess
 
-folder_to_find = 'jarvis-app'  # Искомая папка
+folder_to_find = 'jarvis'  # Искомая папка
 subfolder_to_find = 'commands'  # Искомая подпапка
 subsubfolder_to_find = 'run'  # Искомая подпапка
 new_folder = 'ahk'  # Новая папка для создания
@@ -37,3 +38,13 @@ with open("all_directory.txt", "r") as file, open("only_names.txt", "r") as name
         # Открыть файл .ahk и записать текст с использование строки из файла all_directory.txt
         with open(file_path, "w") as ahk_file:
             ahk_file.write(f"run {line.strip()}")
+
+# Получение списка .ahk файлов
+ahk_files = [f for f in os.listdir(directory_path) if f.endswith('.ahk')]
+
+# Компиляция .ahk файлов с помощью AutoHotkey
+for ahk_file in ahk_files:
+    input_file_path = os.path.join(directory_path, ahk_file)
+    output_file_path = os.path.splitext(input_file_path)[0] + '.exe'
+    subprocess.run(['C:\Program Files\AutoHotkey\Compiler\Ahk2Exe.exe', '/in', input_file_path, '/out', output_file_path])
+

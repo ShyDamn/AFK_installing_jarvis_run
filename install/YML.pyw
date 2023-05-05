@@ -1,7 +1,7 @@
 import os
 import yaml
 
-folder_to_find = 'jarvis-app'  # Искомая папка
+folder_to_find = 'jarvis'  # Искомая папка
 subfolder_to_find = 'commands'  # Искомая подпапка
 new_folder = 'run'  # Новая папка для создания
 

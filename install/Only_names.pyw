@@ -11,8 +11,8 @@ for line in lines:
     name = re.sub(r'\(.*?\)', '', name)
     name = re.sub(r'[\d\W]+', ' ', name)
     name = ' '.join(name.split())
-    if name not in names:
-        names.append(name)
+    if name.lower() not in names:
+        names.append(name.lower())
 
 with open('only_names.txt', 'w', encoding='Windows-1251') as f:
     f.write('\n'.join(names))
